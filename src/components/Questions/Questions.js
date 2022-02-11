@@ -53,7 +53,11 @@ function Questions() {
 		</div>
 	) : (
 		<div>
-			<InputFields noOfIngredients={noOfIngredients} noOfRecipes={noOfRecipes} />
+			<InputFields
+				noOfIngredients={noOfIngredients}
+				noOfRecipes={noOfRecipes}
+				setisInputField={setisInputField}
+			/>
 		</div>
 	);
 }

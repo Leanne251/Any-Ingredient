@@ -6,3 +6,6 @@ function App() {
 }
 
 export default App;
+
+//wrapper around questions, wrapper of components around and pass avalue into this, and components that wants to acess the value in the wrapper.
+// passing down dispatch and and state in an object.

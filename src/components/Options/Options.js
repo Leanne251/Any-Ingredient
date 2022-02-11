@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import SearchAgain from '../SearchAgain/SearchAgain';
 import ShowRecipe from '../ShowRecipe/ShowRecipe';
 
-function Options({ returnedRecipes }) {
+function Options({ returnedRecipes, setisInputField }) {
 	const [ recipeData, setRecipeData ] = useState();
 
 	function displayRecipe(e) {
@@ -26,9 +27,10 @@ function Options({ returnedRecipes }) {
 					{element.title}
 				</button>
 			))}
+			<SearchAgain setisInputField={setisInputField} />
 		</div>
 	) : (
-		<ShowRecipe recipeData={recipeData} />
+		<ShowRecipe recipeData={recipeData} setRecipeData={setRecipeData} setisInputField={setisInputField} />
 	);
 }
 

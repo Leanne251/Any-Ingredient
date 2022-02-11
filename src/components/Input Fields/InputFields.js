@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import Options from '../Options/Options';
 
-function InputFields({ noOfIngredients, noOfRecipes }) {
+function InputFields({ noOfIngredients, noOfRecipes, setisInputField }) {
 	const [ input, setInput ] = useState([]);
 	const [ returnedRecipes, setReturnedRecipes ] = useState();
 
@@ -55,7 +55,7 @@ function InputFields({ noOfIngredients, noOfRecipes }) {
 			<button onClick={useInputs}>Search</button>
 		</div>
 	) : (
-		<Options returnedRecipes={returnedRecipes} />
+		<Options returnedRecipes={returnedRecipes} setisInputField={setisInputField} />
 	);
 }
 

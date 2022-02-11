@@ -1,9 +1,14 @@
 import React from 'react';
+import SearchAgain from '../SearchAgain/SearchAgain';
 
-function ShowRecipe({ recipeData }) {
+function ShowRecipe({ recipeData, setRecipeData, setisInputField }) {
 	console.log(recipeData);
 
 	let instructions = recipeData.instructions.replace(/<\/?[^>]+>/gi, '');
+
+	function backToRecipes() {
+		setRecipeData(undefined);
+	}
 
 	return (
 		<div>
@@ -11,8 +16,8 @@ function ShowRecipe({ recipeData }) {
 			<h4>{recipeData.title}</h4>
 			<img src={recipeData.img} alt={recipeData.title} style={{ height: '400px', width: '450px' }} />
 			<p>{instructions}</p>
-			<button>Back to Recipes</button>
-			<button>Search Again</button>
+			<button onClick={backToRecipes}>Back to Recipes</button>
+			<SearchAgain setisInputField={setisInputField} />
 		</div>
 	);
 }
