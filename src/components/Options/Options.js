@@ -27,10 +27,10 @@ function Options({ returnedRecipes, setisInputField }) {
 					{element.title}
 				</button>
 			))}
-			<SearchAgain setisInputField={setisInputField} />
+			<SearchAgain />
 		</div>
 	) : (
-		<ShowRecipe recipeData={recipeData} setRecipeData={setRecipeData} setisInputField={setisInputField} />
+		<ShowRecipe recipeData={recipeData} setRecipeData={setRecipeData} />
 	);
 }
 

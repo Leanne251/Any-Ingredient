@@ -55,7 +55,7 @@ function InputFields({ noOfIngredients, noOfRecipes, setisInputField }) {
 			<button onClick={useInputs}>Search</button>
 		</div>
 	) : (
-		<Options returnedRecipes={returnedRecipes} setisInputField={setisInputField} />
+		<Options returnedRecipes={returnedRecipes} />
 	);
 }
 

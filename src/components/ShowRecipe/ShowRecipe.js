@@ -17,9 +17,11 @@ function ShowRecipe({ recipeData, setRecipeData, setisInputField }) {
 			<img src={recipeData.img} alt={recipeData.title} style={{ height: '400px', width: '450px' }} />
 			<p>{instructions}</p>
 			<button onClick={backToRecipes}>Back to Recipes</button>
-			<SearchAgain setisInputField={setisInputField} />
+			<SearchAgain />
 		</div>
 	);
 }
 
 export default ShowRecipe;
+
+//useContext hook.

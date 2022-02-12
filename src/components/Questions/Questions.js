@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import React, { useReducer, useState, useRef } from 'react';
 import InputFields from '../Input Fields/InputFields';
+
+export let inputFieldWrapper = React.createContext();
 
 function Questions() {
 	const [ noOfIngredients, setnoOfIngredients ] = useState(0);
@@ -46,18 +48,21 @@ function Questions() {
 	return !isInputField ? (
 		<div>
 			<h3>How many ingredients do you have?</h3>
-			<input type="number" min="1" max="5" name="ingredients" onChange={ingredientsFn} />
+			<input type="number" min="1" max="5" onChange={ingredientsFn} />
+
 			<h3>How many receipes do you want to choose from?</h3>
-			<input type="number" min="1" max="5" name="recipe" onChange={(e) => setNoOfRecipes(e.target.value)} />
+			<input type="number" min="1" max="5" onChange={(e) => setNoOfRecipes(e.target.value)} />
 			<button onClick={getInputBoxes}>Search</button>
 		</div>
 	) : (
 		<div>
-			<InputFields
-				noOfIngredients={noOfIngredients}
-				noOfRecipes={noOfRecipes}
-				setisInputField={setisInputField}
-			/>
+			<inputFieldWrapper.Provider value={setisInputField}>
+				<InputFields
+					noOfIngredients={noOfIngredients}
+					noOfRecipes={noOfRecipes}
+					/* setisInputField={setisInputField} */
+				/>
+			</inputFieldWrapper.Provider>
 		</div>
 	);
 }
