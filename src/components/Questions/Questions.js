@@ -1,10 +1,37 @@
-import { useState } from 'react';
+import React, { useReducer, useState, useRef } from 'react';
 import InputFields from '../Input Fields/InputFields';
+
+export let inputFieldWrapper = React.createContext();
 
 function Questions() {
 	const [ noOfIngredients, setnoOfIngredients ] = useState(0);
 	const [ noOfRecipes, setNoOfRecipes ] = useState(0);
 	const [ isInputField, setisInputField ] = useState(false);
+
+	let initState = {
+		ingredientQuestion: 0,
+		recipeQuestion: 0
+	};
+
+	let ACTIONS = {
+		GET_NUMBERS: 'GET_NUMBERS',
+		GETRECIPES: 'GETRECIPES'
+	};
+
+	function reduce(state, action) {
+		switch (action.type) {
+			case ACTIONS.GETINGREDIENTS:
+				return { ...state, ingredientQuestion: action.payload };
+
+			default:
+				break;
+		}
+	}
+
+	const [ state, dispatch ] = useReducer(reduce, initState);
+
+	let ingredientsNo = useRef('');
+	console.log(initState);
 
 	// tried to create an object just to hold the value of the input.
 	//Then would create an array from this to map over to produce 'x' amount of input boxes.
@@ -46,18 +73,28 @@ function Questions() {
 	return !isInputField ? (
 		<div>
 			<h3>How many ingredients do you have?</h3>
-			<input type="number" min="1" max="5" name="ingredients" onChange={ingredientsFn} />
+			<input type="number" min="1" max="5" ref="ingredientsNo" onChange={ingredientsFn} />
+
 			<h3>How many receipes do you want to choose from?</h3>
 			<input type="number" min="1" max="5" name="recipe" onChange={(e) => setNoOfRecipes(e.target.value)} />
-			<button onClick={getInputBoxes}>Search</button>
+			<button onClick={() => dispatch({ type: ACTIONS.GET_NUMBERS, payload: ingredientsNo.current.value })}>
+				Search
+			</button>
+
+			<input type="text" ref={myInputField} />
+			<button onClick={() => dispatch({ type: ACTIONS.GETINGREDIENTS, payload: myInputField.current.value })}>
+				Get Inputs
+			</button>
 		</div>
 	) : (
 		<div>
-			<InputFields
-				noOfIngredients={noOfIngredients}
-				noOfRecipes={noOfRecipes}
-				setisInputField={setisInputField}
-			/>
+			<inputFieldWrapper.Provider value={setisInputField}>
+				<InputFields
+					noOfIngredients={noOfIngredients}
+					noOfRecipes={noOfRecipes}
+					/* setisInputField={setisInputField} */
+				/>
+			</inputFieldWrapper.Provider>
 		</div>
 	);
 }
