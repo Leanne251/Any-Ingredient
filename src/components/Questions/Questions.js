@@ -1,4 +1,4 @@
-import React, { useReducer, useState, useRef } from 'react';
+import React, { useState } from 'react';
 import InputFields from '../Input Fields/InputFields';
 
 export let inputFieldWrapper = React.createContext();
