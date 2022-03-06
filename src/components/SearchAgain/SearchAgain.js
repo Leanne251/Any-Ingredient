@@ -1,6 +1,7 @@
 import React from 'react';
 import { inputFieldWrapper } from '../Questions/Questions';
 import { useContext } from 'react';
+import ChakraButton from '../Button/Button';
 
 function SearchAgain({ setisInputField }) {
 	let inputField = useContext(inputFieldWrapper);
@@ -8,7 +9,12 @@ function SearchAgain({ setisInputField }) {
 	function searchAgain() {
 		inputField(false);
 	}
-	return <button onClick={searchAgain}>SearchAgain</button>;
+	return (
+		<div>
+			<ChakraButton onClick={searchAgain} text="SearchAgain" />
+			<br />
+		</div>
+	);
 }
 
 export default SearchAgain;

@@ -3,10 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
+import { Box } from '@chakra-ui/react';
+import NavBar from './components/NavBar/NavBar';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<Box
+			backgroundImage="url('/tacos.jpg')"
+			backgroundPosition="center"
+			backgroundRepeat="no-repeat"
+			minHeight="100vh"
+			w="100%"
+			bgSize="cover"
+			padding="0px"
+		>
+			<NavBar />
+			<App />
+		</Box>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
