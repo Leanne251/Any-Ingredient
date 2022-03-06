@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import Options from '../Options/Options';
+import { Box, VStack, Center } from '@chakra-ui/react';
+import ChakraButton from '../Button/Button';
 
 function InputFields({ noOfIngredients, noOfRecipes, setisInputField }) {
 	const [ input, setInput ] = useState([]);
@@ -47,12 +49,25 @@ function InputFields({ noOfIngredients, noOfRecipes, setisInputField }) {
 	return returnedRecipes === undefined ? (
 		<div>
 			{/*<input type="number" onChange={inputfill} />*/}
-			<p>What ingredients do you want to use?</p>
+			<Box bg="rgba(255,255,255, 0.8)" borderRadius="5" color="black" width="100%" boxShadow="2xl" p={2}>
+				<h5>
+					<Center>What ingredients do you want to use?</Center>
+				</h5>
+			</Box>
+
 			{noOfIngredients.map((element, index) => {
-				return <input key={index} name={index} type="text" onChange={getInput} />;
+				return (
+					<VStack>
+						<Box bg="rgba(77,19,113,0.8)" borderRadius="5" color="white" width="50%">
+							<input className="no-outline" key={index} name={index} type="text" onChange={getInput} />
+						</Box>
+					</VStack>
+				);
 			})}
 
-			<button onClick={useInputs}>Search</button>
+			<Center>
+				<ChakraButton text="Search" onClick={useInputs} />
+			</Center>
 		</div>
 	) : (
 		<Options returnedRecipes={returnedRecipes} />

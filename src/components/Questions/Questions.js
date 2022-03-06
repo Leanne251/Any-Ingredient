@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import InputFields from '../Input Fields/InputFields';
+import { Box, Center, VStack, HStack } from '@chakra-ui/react';
+import ChakraButton from '../Button/Button';
 
 export let inputFieldWrapper = React.createContext();
 
@@ -42,17 +44,47 @@ function Questions() {
 	// when you have components that you don't want to be rendered at the start do you just use conditional rendering?
 
 	function getInputBoxes() {
+		if (noOfIngredients === 0 || noOfRecipes === 0) {
+			alert('Please enter a number of ingredients and recipes');
+			return null;
+		}
 		setisInputField(true);
 	}
 
 	return !isInputField ? (
 		<div>
-			<h3>How many ingredients do you have?</h3>
-			<input type="number" min="1" max="5" onChange={ingredientsFn} />
+			<Center>
+				<VStack>
+					<Box bg="rgba(77,19,113,0.8)" borderRadius="5" color="#fff" width="100%" boxShadow="2xl">
+						<h5> Find something to cook using the things you have at home...</h5>
+					</Box>
+					<HStack>
+						<Box bg="rgba(255,255,255, 0.8)" borderRadius="5" color="black" width="100%" boxShadow="2xl">
+							<h5>How many ingredients do you have?</h5>
+							<p />
+						</Box>
+						<Box bg="rgba(255,255,255, 0.8)" borderRadius="5" color="black" boxShadow="2xl">
+							<input className="no-outline" type="number" min="1" max="5" onChange={ingredientsFn} />
+						</Box>
+					</HStack>
+					<HStack>
+						<Box bg="rgba(255,255,255, 0.8)" borderRadius="5" color="black" width="100%" boxShadow="2xl">
+							<h5>How many receipes do you want to choose from?</h5>
+						</Box>
+						<Box bg="rgba(255,255,255, 0.8)" borderRadius="5" color="black" boxShadow="2xl">
+							<input
+								className="no-outline"
+								type="number"
+								min="1"
+								max="5"
+								onChange={(e) => setNoOfRecipes(e.target.value)}
+							/>
+						</Box>
+					</HStack>
 
-			<h3>How many receipes do you want to choose from?</h3>
-			<input type="number" min="1" max="5" onChange={(e) => setNoOfRecipes(e.target.value)} />
-			<button onClick={getInputBoxes}>Search</button>
+					<ChakraButton text="Search" onClick={getInputBoxes} />
+				</VStack>
+			</Center>
 		</div>
 	) : (
 		<div>
