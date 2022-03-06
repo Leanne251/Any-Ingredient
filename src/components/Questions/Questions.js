@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import InputFields from '../Input Fields/InputFields';
+import { Box, alpha, Typography, Button, TextField } from '@mui/material';
 
 export let inputFieldWrapper = React.createContext();
 
@@ -47,12 +48,67 @@ function Questions() {
 
 	return !isInputField ? (
 		<div>
-			<h3>How many ingredients do you have?</h3>
-			<input type="number" min="1" max="5" onChange={ingredientsFn} />
+			<Box
+				sx={{
+					bgcolor: (theme) => alpha(theme.palette.primary.main, 0.8),
 
-			<h3>How many receipes do you want to choose from?</h3>
-			<input type="number" min="1" max="5" onChange={(e) => setNoOfRecipes(e.target.value)} />
-			<button onClick={getInputBoxes}>Search</button>
+					mt: '2em',
+					padding: '2em',
+					boxShadow: 5,
+					borderRadius: 2,
+					minWidth: 300,
+					maxWidth: 600,
+					justifyItems: 'center',
+					color: '#fff'
+				}}
+			>
+				<Typography align="center">Find Something to cook using the things you have at home... </Typography>
+			</Box>
+
+			<Box
+				sx={{
+					bgcolor: (theme) => alpha('#fff', 0.8),
+
+					mt: '2em',
+					boxShadow: 1,
+					borderRadius: 2,
+					minWidth: 300,
+					maxWidth: 600,
+					justifyItems: 'center'
+				}}
+			>
+				<h3>How many ingredients do you have?</h3>
+				<TextField type="number" onChange={ingredientsFn} />
+			</Box>
+
+			<Box
+				sx={{
+					bgcolor: (theme) => alpha('#fff', 0.8),
+
+					mt: '2em',
+					boxShadow: 1,
+					borderRadius: 2,
+					minWidth: 300,
+					maxWidth: 600
+				}}
+			>
+				<h3>How many receipes do you want to choose from?</h3>
+				<TextField type="number" min="1" max="5" onChange={(e) => setNoOfRecipes(e.target.value)} />
+			</Box>
+
+			<Button
+				sx={{
+					bgcolor: (theme) => alpha('#fff', 0.8),
+					mt: '2em',
+					boxShadow: 1,
+					borderRadius: 2,
+					minWidth: 50,
+					maxWidth: 100
+				}}
+				onClick={getInputBoxes}
+			>
+				Search
+			</Button>
 		</div>
 	) : (
 		<div>
