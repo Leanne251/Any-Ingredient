@@ -34,7 +34,9 @@ function ShowRecipe({ recipeData, setRecipeData, setisInputField }) {
 						}}
 					/>
 				</Center>
-				<p style={{ padding: '20px' }}>{instructions}</p>
+				<Center>
+					<p style={{ padding: '10px', width: '80%' }}>{instructions}</p>
+				</Center>
 			</Box>
 			<Center>
 				<button onClick={backToRecipes}>Back to Recipes</button>

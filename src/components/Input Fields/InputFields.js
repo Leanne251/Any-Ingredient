@@ -58,7 +58,7 @@ function InputFields({ noOfIngredients, noOfRecipes, setisInputField }) {
 			{noOfIngredients.map((element, index) => {
 				return (
 					<VStack>
-						<Box bg="rgba(77,19,113,0.8)" borderRadius="5" color="white" width="50%">
+						<Box bg="rgba(77,19,113,0.8)" borderRadius="5" color="white">
 							<input className="no-outline" key={index} name={index} type="text" onChange={getInput} />
 						</Box>
 					</VStack>
