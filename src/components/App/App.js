@@ -1,6 +1,6 @@
 import Questions from '../Questions/Questions';
 import './App.css';
-import { Box, Center } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
 
 function App() {
 	return (
